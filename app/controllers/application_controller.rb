@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
     @user = User.find_by(:username=>params["username"])
     if @user
       if params[:password] == @user.password
-        session[:user_id] = @user.id #so confusing, is it name user username user_id gonna redo, rspec needs user_id
+        session[:user_id] = @user.id #so confusing, is it name user username user_id gonna redo, rspec needs user_id, looking at seeds redo db with username
         redirect '/account'
       end
     end
