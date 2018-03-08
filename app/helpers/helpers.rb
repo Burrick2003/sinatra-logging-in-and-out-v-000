@@ -3,6 +3,6 @@ class Helpers
     @user=User.find_by_id(session_hash[:user_id])
   end
   def self.is_logged_in?(session_hash)
-    !!session[:user_id]
+    !!session_hash[:user_id]
   end
 end
