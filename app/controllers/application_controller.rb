@@ -12,8 +12,13 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do
     @user = User.find_by(username: params["username"])
-    session[:user_id] = @user.id #so confusing, is it user username user_id gonna redo
-    redirect '/account'
+    if @user
+      if params[:password] == @user.password
+        session[:user_id] = @user.id #so confusing, is it name user username user_id gonna redo, rspec needs user_id
+        redirect '/account'
+      end
+    end
+    erb :error
   end
 
   get '/account' do
